@@ -1,0 +1,102 @@
+import Highlight from "./_Highlight.jsx";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Highlight color="#25c2a0">Docusaurus green</Highlight> and
+<Highlight color="#1877F2">Facebook blue</Highlight> are my favorite colors.
+
+I can write **Markdown** alongside my _JSX_!
+
+- cs
+- fdfgdfg
+
+[x] fdsfs
+
+<Tabs
+  defaultValue="orange"
+  values={[
+    { label: "Apple", value: "apple" },
+    { label: "Orange", value: "orange" },
+    { label: "Banana", value: "banana" },
+  ]}
+>
+  <TabItem value="apple" label="Apple" default>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange">
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana">
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">
+    Use Ctrl + C to copy.
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+    Use Command + C to copy.
+  </TabItem>
+</Tabs>
+
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">
+    I am Windows.
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+    I am macOS.
+  </TabItem>
+  <TabItem value="linux" label="Linux">
+    I am Linux.
+  </TabItem>
+</Tabs>
+
+```jsx title="/src/suport/index" {1,4-6,11} showLineNumbers live
+// highlight-next-line
+function Clock(props) {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    var timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
+
+  function tick() {
+    setDate(new Date());
+  }
+
+  return (
+    <div>
+      <h2>It is {date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
+```jsx live noInline
+const project = "Docusaurus";
+
+const Greeting = () => <p>Hello {project}!</p>;
+
+function MyPlayground(props) {
+  return (
+    <div>
+      <div onClick={() => alert("hey!")}>Click me</div>
+    </div>
+  );
+}
+render(<MyPlayground />);
+```
+
+![](https://youtu.be/yKNxeF4KMsY)
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
