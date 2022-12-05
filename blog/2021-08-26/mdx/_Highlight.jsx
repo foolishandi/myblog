@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 import CodeBlock from "@theme/CodeBlock";
-import rowEle from "!!raw-loader!../support/index";
+import rowEle from "!!raw-loader!../../../src/pages/index";
 
 export default ({ children, color }) => (
   // highlight-next-line
@@ -14,7 +14,8 @@ export default ({ children, color }) => (
     }}
   >
     {children}
-    <Button type="ghost">测试</Button>
-    <CodeBlock language="jsx">{rowEle}</CodeBlock>
+    <CodeBlock language="jsx" title="/src/pages/index">
+      {rowEle}
+    </CodeBlock>
   </span>
 );

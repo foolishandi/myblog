@@ -71,20 +71,9 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "intro",
+            docId: "intro/index",
             position: "left",
-            label: "es6",
-          },
-          {
-            to: "/structure",
-            position: "left",
-            label: "前端框架",
-          },
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "devops",
+            label: "工作笔记",
           },
           { to: "/blog", label: "日志记录", position: "left" },
           {

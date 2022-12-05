@@ -1,7 +1,7 @@
 ---
-slug: welcome
-title: Welcome
-authors: [slorber, yangshun]
+slug: init
+title: 初始化
+authors: [foolishandi]
 tags: [facebook, hello, docusaurus]
 ---
 
