@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4821],{9538:e=>{e.exports=JSON.parse('{"title":"devops","description":"devops","slug":"/category/devops","permalink":"/docs/category/devops","navigation":{"previous":{"title":"\u4ecb\u7ecd","permalink":"/docs/jquery/"},"next":{"title":"deploy","permalink":"/docs/devops/k8s/deploy"}}}')}}]);

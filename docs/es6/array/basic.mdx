@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+---
+
+import TabLists from "./tabs";
+import CodeBlock from "@theme/CodeBlock";
+
+<TabLists dataList={[{
+    key:'init',
+    content:
+    <CodeBlock language="jsx" title="/src/pages/index">
+1.新建一维数组
+
+new Array(5).fill(0) // >[0,0,0,0,0]
+
+2.新建二维数组
+new Array(5).fill(0).map(e=>new Array(5).fill(0))
+// >[
+[0,0,0,0,0],
+[0,0,0,0,0],
+[0,0,0,0,0],
+[0,0,0,0,0],
+[0,0,0,0,0]
+]
+
+</CodeBlock>
+},{
+key:'test',
+content:
+<CodeBlock language="jsx" title="/src/pages/index">
+new Array(5).fill(0).map(e=>new Array(5).fill(0))
+</CodeBlock>
+}]}></TabLists>
