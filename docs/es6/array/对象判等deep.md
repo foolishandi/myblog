@@ -9,10 +9,7 @@ const objectEq = (obj1, obj2) => {
     return false;
   }
   // 判断长短
-  if (
-    obj1.length !== obj2.length ||
-    Object.keys(obj1).length !== Object.keys(obj2).length
-  ) {
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
     return false;
   }
 
