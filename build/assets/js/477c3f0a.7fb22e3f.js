@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[3919],{3916:e=>{e.exports=JSON.parse('{"title":"es6","description":"es6","slug":"/category/es6","permalink":"/docs/category/es6","navigation":{"previous":{"title":"\u7b80\u4ecb","permalink":"/docs/intro/"},"next":{"title":"\u6587\u6863\u6559\u7a0b","permalink":"/docs/es6/"}}}')}}]);

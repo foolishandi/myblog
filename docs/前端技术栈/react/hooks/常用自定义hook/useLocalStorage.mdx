@@ -1,0 +1,85 @@
+:::info
+LocalStorage 相关.
+
+:::
+
+## 1.实现
+
+```jsx
+import { useState } from "react";
+
+const useLocalStorage = (key = "", initialValue = "") => {
+  const [state, setState] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
+
+  const setLocalStorageState = (newState) => {
+    try {
+      const newStateValue =
+        typeof newState === "function" ? newState(state) : newState;
+      setState(newStateValue);
+      window.localStorage.setItem(key, JSON.stringify(newStateValue));
+    } catch (error) {
+      console.error(`Unable to store new value for ${key} in localStorage.`);
+    }
+  };
+
+  return [state, setLocalStorageState];
+};
+
+export default useLocalStorage;
+```
+
+## 2.使用
+
+```jsx
+import { useLocalStorage } from "./hooks";
+
+const defaultSettings = {
+  notifications: "weekly",
+};
+
+function App() {
+  const [appSettings, setAppSettings] = useLocalStorage(
+    "app-settings",
+    defaultSettings
+  );
+
+  return (
+    <div className="h-full w-full flex flex-col justify-center items-center">
+      <div className="flex items-center mb-8">
+        <p className="font-medium text-lg mr-4">Your application's settings:</p>
+
+        <select
+          value={appSettings.notifications}
+          onChange={(e) =>
+            setAppSettings((settings) => ({
+              ...settings,
+              notifications: e.target.value,
+            }))
+          }
+          className="border border-gray-900 rounded py-2 px-4 "
+        >
+          <option value="daily">daily</option>
+          <option value="weekly">weekly</option>
+          <option value="monthly">monthly</option>
+        </select>
+      </div>
+
+      <button
+        onClick={() => setAppSettings(defaultSettings)}
+        className="rounded-md shadow-md py-2 px-6 bg-red-500 text-white uppercase font-medium tracking-wide text-sm leading-8"
+      >
+        Reset settings
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```

@@ -1,0 +1,16 @@
+:::info
+只渲染一次页面
+:::
+
+## 1.实现
+
+```jsx
+import { useState, useEffect } from "react";
+const useOnceRender = (param) => {
+  const [state, setState] = useState(param);
+  useEffect(() => {
+    setState(!param);
+  }, []);
+  return state;
+};
+```

@@ -1,0 +1,9 @@
+---
+sidebar_position: 0
+---
+
+# 文档教程
+
+:::note
+[阮一峰 ES6 入门教程](https://es6.ruanyifeng.com/)
+:::
