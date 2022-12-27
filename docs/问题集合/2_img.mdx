@@ -1,0 +1,10 @@
+:::danger
+问题描述：`img`的`src`有时候链接完全正确，却加载不出图片
+
+:::
+
+```html
+1.head加上: <meta name="referrer" content="no-referrer" />
+
+2.img标签:<img src="" referrerpolicy="no-referrer" />
+```
