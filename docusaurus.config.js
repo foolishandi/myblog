@@ -13,7 +13,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/1.ico",
+  favicon: "img/Laptop2.svg",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -64,7 +64,7 @@ const config = {
         title: "foolishandi",
         logo: {
           alt: "My Site Logo",
-          src: "img/logo.svg",
+          src: "img/Laptop2.svg",
         },
         items: [
           {

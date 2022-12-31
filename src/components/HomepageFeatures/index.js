@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "前后端技术栈",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("@site/static/img/3U_Server.svg").default,
     description: (
       <>
         前端包括三大件、react、vue、angular1.8、jquery等，后端主要为nodejs，mysql，graphql,restful
@@ -15,12 +15,12 @@ const FeatureList = [
   },
   {
     title: "DevOps",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    Svg: require("@site/static/img/Cloud_Database.svg").default,
     description: <>持续交付流水线相关,k8s等</>,
   },
   {
     title: "项目问题",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    Svg: require("@site/static/img/Firewalld2.svg").default,
     description: <>常见问题记录</>,
   },
 ];
