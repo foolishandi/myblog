@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>child</title>
+  </head>
+  <body>
+    <button onclick="childClick()">子页面测试</button>
+    <script>
+      function childTest() {
+        console.log("子页面方法");
+      }
+      function childClick() {
+        console.log("child");
+        messageToParent();
+      }
+      function messageToParent() {
+        const title = "child";
+        const userId = "32413";
+        const returnData = {
+          title,
+          userId,
+          data: {
+            msg: "子页面测试！",
+          },
+        };
+        // * 表示跨源不做设置
+        // 127.0.0.1 表示仅支持源
+        window.parent.postMessage(returnData, "*");
+        // window.postMessage(returnData, "127.0.0.1");
+
+        // 调用父方法
+        window.parent.parentTest();
+      }
+    </script>
+  </body>
+</html>

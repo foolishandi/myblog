@@ -8,7 +8,7 @@ export default function FrameWrapper(props) {
 
   const onload = () => {
     console.log(1);
-    setHeight(ref.current.contentDocument.body.scrollHeight);
+    setHeight(ref.current.contentDocument?.body.scrollHeight);
     if (props.onLoad) props.onLoad();
   };
   //   console.log(size, iframeRef?.querySelectorAll("div"));

@@ -7,10 +7,10 @@ export default function useIframe(ref, selector) {
     const _onload = resRef.current.onload;
     resRef.current.onload = (e) => {
       if (_onload) _onload();
-      console.log(resRef.current.contentDocument.body.scrollHeight);
+      console.log(resRef.current.contentDocument?.body.scrollHeight);
       setSize({
-        H: resRef.current.contentDocument.body.scrollHeight,
-        W: resRef.current.contentDocument.body.scrollWidth,
+        H: resRef.current.contentDocument?.body.scrollHeight,
+        W: resRef.current.contentDocument?.body.scrollWidth,
       });
     };
   }
@@ -19,6 +19,6 @@ export default function useIframe(ref, selector) {
   }, [size.H, resRef]);
   return [
     size,
-    resRef.current ? resRef.current.contentDocument.body : resRef.current,
+    resRef.current ? resRef.current.contentDocument?.body : resRef.current,
   ];
 }
