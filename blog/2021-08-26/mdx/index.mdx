@@ -1,0 +1,156 @@
+---
+title: mdx示例
+---
+
+import Highlight from "./_Highlight.jsx";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## 1.引入组件代码
+
+<Highlight color="#25c2a0">直接引用组件代码</Highlight>
+
+## 2.混用 mdx
+
+**Markdown** 与 <code>jsx</code> 混用
+
+- cs
+- fdfgdfg
+
+- [x] fdsfs
+
+> 一级引用
+>
+> > 二级引用
+> >
+> > > 三级引用
+> > >
+> > > > 四级引用
+> > > >
+> > > > > 五级引用
+> > > > >
+> > > > > > 六级引用
+
+//无序列表嵌套
+
+- 123
+  - abc
+  - bcd
+  - cde
+- 465
+- 789
+  //有序列表嵌套
+
+1. abcd
+   1. abcde
+   2. abcde
+   3. abcde
+2. bcde
+3. cdef
+
+`shaoliangdaima,danhangshiyong`
+
+[简书]: https://www.jianshu.com "创作你的创作"
+
+---
+
+### 表格
+
+| 123 | 234 | 345 |
+| :-- | :-: | --: |
+| abc | bcd | cde |
+| abc | bcd | cde |
+| abc | bcd | cde |
+
+### tab 栏
+
+<Tabs
+  defaultValue="orange"
+  values={[
+    { label: "Apple", value: "apple" },
+    { label: "Orange", value: "orange" },
+    { label: "Banana", value: "banana" },
+  ]}
+>
+  <TabItem value="apple" label="Apple" default>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange">
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana">
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">
+    Use Ctrl + C to copy.
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+    Use Command + C to copy.
+  </TabItem>
+</Tabs>
+
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">
+    I am Windows.
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+    I am macOS.
+  </TabItem>
+  <TabItem value="linux" label="Linux">
+    I am Linux.
+  </TabItem>
+</Tabs>
+
+## 3.在线实时编辑器
+
+```jsx title="/src/suport/index" {1,4-6,11} showLineNumbers live
+// highlight-next-line
+function Clock(props) {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    var timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
+
+  function tick() {
+    setDate(new Date());
+  }
+
+  return (
+    <div>
+      <h2>It is {date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
+```jsx live noInline
+const project = "Docusaurus";
+
+const Greeting = () => <p>Hello {project}!</p>;
+
+function MyPlayground(props) {
+  return (
+    <div>
+      <div onClick={() => alert("hey!")}>Click me</div>
+    </div>
+  );
+}
+render(<MyPlayground />);
+```
+
+## 4.美人鱼图
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```

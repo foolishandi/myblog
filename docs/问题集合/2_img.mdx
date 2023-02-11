@@ -1,0 +1,44 @@
+:::danger
+问题描述：`img`的`src`有时候链接完全正确，却加载不出图片
+
+:::
+
+1. `head `标签加上:` <meta name="referrer" content="no-referrer" />`
+
+2. `img` 标签加上:`<img src="" referrerpolicy="no-referrer" />`
+
+3. `img`的`src`地址存在`ssl`访问问题:
+   例如：图片地址:`http://dev.dmb.cn/dev/234.png`,如果网站配置了 https，会被自动转成:`https://dev.dmb.cn/dev/234.png`
+   但是图片地址不支持`https`访问
+
+   > <font color="red">思路：利用反向代理解决图片访问</font>
+
+   1. 将图片地址转写成自己定义的地址，如:`<img src='/imgUrl/dev/234.png' />`
+   2. 配置 webpack 的 proxy 代理配置;
+   3. 配置生产的 `k8s` 配置文件 `yaml` 的 `nginx` 配置;
+
+```js title=webpack.config.js
+export default {
+  devServer: {
+    proxy: {
+      "/imgUrl": {
+        target: "http://dev.dmb.cn",
+        pathRewrite: { "^/imgUrl": "" },
+      },
+    },
+  },
+};
+```
+
+```js title=BuildScript/deploy_st.yaml
+···
+server  {
+    listen 80;
+    ···
+
+    location ^~ /imgUrl/ {
+        proxy_pass http://dev.dmb.cn/
+    }
+
+}
+```

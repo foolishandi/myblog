@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+
+  --width: 400px;
+  --height: 260px;
+  --pWidth: 80px;
+  --pHeight: 80px;
+
+  --move: 0px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containter {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  background-image: url(./code.png);
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 4px 4px 7px;
+}
+.containter::before,
+.containter::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: inherit;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  /* background-color: red; */
+
+  clip-path: inset(
+    calc((var(--height) - var(--pHeight)) / 2) var(--pWidth)
+      calc((var(--height) - var(--pHeight)) / 2)
+      calc(var(--width) - var(--pWidth) * 2)
+  );
+}
+.containter::after {
+  transform: translateX(
+    clamp(
+      calc(var(--width) * -1),
+      calc(var(--width) * -1 + var(--move)),
+      var(--pWidth)
+    )
+  );
+  transition: all .25s ease-in-out;
+}
+
+.containter:active::after{
+  transition: none;
+}
+
+.containter::before {
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+}
+
+.guide {
+  height: 30px;
+  width: calc(var(--width) + var(--pWidth) * 2);
+  border-radius: 18px;
+  position: absolute;
+  bottom: -50px;
+  left: calc(var(--pWidth) * 2 * -1);
+
+  background-color: #eee;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.guide span {
+  position: absolute;
+  left: 0;
+
+  height: inherit;
+  width: var(--pWidth);
+
+  border-radius: inherit;
+  background-color: #fff;
+  cursor: move;
+
+  transform: translateX(
+    clamp(0px, var(--move), calc(var(--width) + var(--pWidth)))
+  );
+
+  transition: all .25s ease-in-out;
+
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.guide span:active{
+    transition: none;
+}
+
+.containter.passed .containter::after,
+.containter.passed .containter::before,
+.containter.passed .guide {
+  opacity: 0;
+}

@@ -1,0 +1,15 @@
+import { envUrl } from "/src/utils/env";
+const iframe1 = envUrl() + "/html/postMessage/parent.html";
+const iframe2 = envUrl() + "/html/postMessage2/parent.html";
+
+> 监听的'message'类型的事件
+
+![possage](./imgs/postMessage.png)
+
+## 1.网页内嵌/同源 
+
+<a href={iframe1} target='_blank'>见测试页面</a>
+
+## 2.跨源
+
+<a href={iframe2} target='_blank'>见测试页面</a>

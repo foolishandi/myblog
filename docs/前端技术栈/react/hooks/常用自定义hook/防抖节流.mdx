@@ -1,0 +1,114 @@
+:::info
+防抖:当一个函数连续被调用时，只执行最后一次。登录、发短信等按钮避免用户点击太快，以致于发送了多次请求，需要防抖。
+
+节流：限制一个函数在一段时间内只能执行一次。一般用在 scroll、input 等可能连续触发的事件处理上。
+:::
+
+## 1.普通基本函数
+
+```jsx
+// 节流
+function throttle(func, ms) {
+  let previous = 0;
+  return function () {
+    let now = Date.now();
+    let context = this;
+    let args = arguments;
+    if (now - previous > ms) {
+      func.apply(context, args);
+      previous = now;
+    }
+  };
+}
+
+// 防抖
+function debounce(func, ms) {
+  let timeout;
+  return function () {
+    let context = this;
+    let args = arguments;
+
+    if (timeout) clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, ms);
+  };
+}
+```
+
+## 2.useDebounce
+
+```jsx
+import { useEffect, useRef } from "react";
+
+const useDebounce = (fn, ms = 30, deps = []) => {
+  let timeout = useRef();
+  useEffect(() => {
+    if (timeout.current) clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => {
+      fn();
+    }, ms);
+  }, deps);
+  const cancel = () => {
+    clearTimeout(timeout.current);
+    timeout = null;
+  };
+
+  return [cancel];
+};
+
+export default useDebounce;
+```
+
+```jsx
+// ...
+import { useDebounce } from "hooks";
+const Home = (props) => {
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [cancel] = useDebounce(
+    () => {
+      setB(a);
+    },
+    2000,
+    [a]
+  );
+
+  const changeIpt = (e) => {
+    setA(e.target.value);
+  };
+  return (
+    <div>
+      <input type="text" onChange={changeIpt} />
+      {b} {a}
+    </div>
+  );
+};
+```
+
+## 3.useThrottle
+
+```jsx
+import { useEffect, useRef, useState } from "react";
+
+const useThrottle = (fn, ms = 30, deps = []) => {
+  let previous = useRef(0);
+  let [time, setTime] = useState(ms);
+  useEffect(() => {
+    let now = Date.now();
+    if (now - previous.current > time) {
+      fn();
+      previous.current = now;
+    }
+  }, deps);
+
+  const cancel = () => {
+    setTime(0);
+  };
+
+  return [cancel];
+};
+
+export default useThrottle;
+```
