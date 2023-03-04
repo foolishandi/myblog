@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="../toolJs/jquery-tooltipify/tooltipify.min.css"
+    />
+    <title>tip</title>
+  </head>
+  <body>
+    <div title="这是一个测试！" tabindex="0" style="position: static">
+      鼠标移动这里！
+    </div>
+    <div title="这是一个测试！" tabindex="0" style="position: static">
+      鼠标移动这里！
+    </div>
+    <div title="这是一个测试！" tabindex="0" style="position: static">
+      鼠标移动这里！
+    </div>
+    <div title="这是一个测试！" tabindex="0" style="position: static">
+      鼠标移动这里！
+    </div>
+    <div title="这是一个测试！" tabindex="0" style="position: static">
+      鼠标移动这里！
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="../toolJs/jquery-tooltipify/jquery-tooltipify.min.js"></script>
+    <script>
+      $("[title]").tooltipify({
+        position: "top",
+        cssClass: "tip",
+      });
+    </script>
+  </body>
+</html>
