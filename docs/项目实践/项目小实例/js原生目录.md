@@ -1,14 +1,13 @@
-<!-- import { envUrl } from "/src/utils/env"; -->
-<!-- const iframe1 = envUrl() + "/html/drop/drop.html"; -->
-<!-- const iframe2 = envUrl() + "/html/vertificationCode1"; -->
-
+import { Button } from "antd";
 
 - 动态水滴 
-
-      见测试页面
+<Button type="link" href="/html/drop/drop.html" target="_blank">
+  见页面测试
+</Button>
 
 
 
 - 图片验证码
-
-      见测试页面
+<Button type="link" href="/html/vertificationCode1" target="_blank">
+  见页面测试
+</Button>

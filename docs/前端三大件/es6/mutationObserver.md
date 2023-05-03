@@ -56,7 +56,9 @@ disconnect 方法用来停止观察。调用该方法后，DOM 再发生变动�
 
 用来清除变动记录，即不再处理未处理的变动。该方法返回变动记录的数组。
 
-## 4.MutationRecord 对象:返回的变动记录
+## 4.MutationRecord 
+
+含义:返回的变动记录
 
 DOM 每次发生变化，就会生成一条变动记录（MutationRecord 实例）。该实例包含了与变动相关的所有信息。
 
@@ -79,6 +81,8 @@ MutationRecord 对象包含了 DOM 的相关信息，有如下属性:
 > attributeName：发生变动的属性。如果设置了 attributeFilter，则只返回预先指定的属性。
 
 > oldValue：变动前的值。这个属性只对 attribute 和 characterData 变动有效，如果发生 childList 变动，则返回 null。
+
+### 4.1 示例 1
 
 ```html
 <div id="container">
@@ -117,6 +121,52 @@ MutationRecord 对象包含了 DOM 的相关信息，有如下属性:
 ```
 
 ![](./imgs/mutation.png)
+
+### 4.2 示例 2
+
+```js
+useEffect(() => {
+    // 选择需要观察变动的节点
+    const targetNode = document.getElementsByClassName(
+      "fc-view-harness fc-view-harness-active"
+    )[0];
+
+    // 观察器的配置（需要观察什么变动）
+    const config = { childList: true };
+
+    // 当观察到变动时执行的回调函数
+    const callback = function (mutationsList: any, observer: any) {
+      // Use traditional 'for loops' for IE 11
+      for (let mutation of mutationsList) {
+        if (mutation.type === "childList") {
+          const addEle = mutation.addedNodes[0] as HTMLElement;
+          if (addEle && addEle.classList.contains("fc-popover")) {
+            const date = addEle.getAttribute("data-date");
+            const parentEle = document.querySelector(
+              `td[data-date="${date}"]`
+            ) as HTMLElement;
+            addEle.style.top = "0";
+            addEle.style.left = "0";
+            parentEle.style.position = "relative";
+            parentEle?.appendChild(addEle);
+          }
+        }
+      }
+    };
+
+    // 创建一个观察器实例并传入回调函数
+    const observer = new MutationObserver(callback);
+
+    // 以上述配置开始观察目标节点
+    observer.observe(targetNode, config);
+
+    return () => {
+      // 之后，可停止观察
+      observer.disconnect();
+    };
+  }, []);
+
+```
 
 ## 5.拓展
 
