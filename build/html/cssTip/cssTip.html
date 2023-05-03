@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./cssTip.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>css tip</title>
+  </head>
+  <body>
+    <div class="hint--bottom" data-hint="Yeah, I am >:D">鼠标滑过来</div>
+    <table style="border:1px solid rgba(0,0,0,.25);table-layout: fixed;" >
+      <thead style="background-color: whitesmoke">
+        <td style="width: 120px;text-align: center;">id</td>
+        <td style="width: 120px;text-align: center;">email</td>
+        <td style="width: 240px;text-align: center;">detail</td>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      // 判断文字是否超出容器
+      function judgeTextEllipsis(cntEle, wordEle) {
+        var thisWidth = cntEle.width();
+        var wordWidth = wordEle[0].scrollWidth;
+        console.log(wordWidth,thisWidth);
+        return wordWidth >= thisWidth;
+      }
+
+      function tooltipHtml(str, width, className,type='div') {
+        const style=` 
+                      ${type=='div' ? 'position:relative;color:black;' : 'position:absolute;color:rgba(0,0,0,0);'}
+                      width:${width ? width :''}px!important;
+                      overflow:hidden;
+                      text-overflow:ellipsis;
+                      white-space:nowrap;
+                      border:none;
+                      outline:none;
+                      height:32px;
+                      line-height:32px;
+                      font-size:14px;
+                    `
+        return `
+            <div 
+              class='tip' 
+              data-tip='${str}'
+            >
+              <div class='label text' style='${style}'>${str}</div>
+              ${
+                type=='div'?
+                  ''
+                  :
+                  `
+                  <input 
+                    type='${type}'
+                    class='${className || ""}' 
+                    style='${style.concat('position:relative;color:black;')}'
+                    value='${str}'
+                  >
+                  </input>
+                  `
+              }
+              
+            </div>
+            `;
+      }
+      const fakeData = [
+        {
+          id: "fggfd",
+          email: "12@qq.com",
+          detail: "第三方的发的发生的"
+        },
+        {
+          id: "sdfsdfz",
+          email: "12gdgd@qq.com",
+          detail: "第三方发生的发生的发生的发生的",
+        },
+        {
+          id: "dfdfdsfs",
+          email: "12dafd@qq.com",
+          detail: "第三方发生的发生的发生的发生的发生的发生的",
+        },
+      ];
+      const tbodyHtml = fakeData.map(
+        (item) => `
+        <tr>
+          <td key='${item.id}'>${tooltipHtml(item.id,118)}</td>  
+          <td key='${item.id}'>${tooltipHtml(item.email,118)}</td>  
+          <td key='${item.id}'>${tooltipHtml(item.detail,238,'','text')}</td>  
+        </tr>
+      `
+      ).join('');
+      $("tbody").html(tbodyHtml);
+      $('tbody').on('mouseenter','.tip',function(e){
+        const td=$(this).parent('td');
+        const text=$(this).find('.text');
+        $(this)[judgeTextEllipsis(td,text)?'addClass':'removeClass']('tip--top');
+      })
+      $('tbody').on('blur','.text',function(e){
+        $(this).scrollLeft(0)
+      })
+      $('tbody').on('input','.tip input',function(e){
+        const label=$(this).prev();
+        const cnt=$(this).parent();
+        cnt.attr('data-tip',e.target.value);
+        cnt.removeClass('tip--top');
+        label.html(e.target.value);
+      })
+    </script>
+  </body>
+</html>

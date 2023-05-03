@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"></script>
+    <script>
+      (function ($) {
+        $.fn.bootstrapModal = function (options) {
+          const defaults = {
+            classList: [],
+            title: "",
+            content: "",
+            footer: "",
+          };
+          const opts = $(this).extend(defaults, options);
+
+          const ID = "bootStrapModal" + Math.random();
+          const returnHtml = `
+                        <div
+                            class="modal fade ${opts.classLists.join(" ")}"
+                            id="${ID}"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="myModalLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-hidden="true"
+                                        >
+                                        &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            ${opts.title}
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        ${opts.content}
+                                    </div>
+                                    <div class="modal-footer">
+                                        ${opts.footer}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+          $(body).append(returnHtml);
+          $(`#${ID}`).modal(opts);
+        };
+      })(jQuery);
+    </script>
+
+    <title>js Modal</title>
+  </head>
+  <body>
+    <button type="button">打开模态框</button>
+    <script>
+      $("button").on("click", function () {
+        console.log(1);
+        $.bootstrapModal({
+          classList: ["test"],
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跨源</title>
+  </head>
+  <body>
+    <button onclick="test()">测试跨域子页面</button>
+    <button onclick="test2()">fetch子页面</button>
+    <iframe name="baidu" src="https://www.baidu.com" frameborder="0"></iframe>
+    <script>
+      function test() {
+        console.log("父测试");
+        console.log(baidu);
+      }
+      function test2() {
+        fetchData();
+      }
+      async function fetchData() {
+        const baiduData = await fetch("https://www.baidu.com/", {
+          headers: {
+            accept:
+              "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "accept-language": "zh-CN,zh;q=0.9",
+            "cache-control": "no-cache",
+          },
+          method: "GET",
+        })
+          .then((res) => res.text())
+          .then((data) => data);
+        baidu.window.body = baiduData.body;
+      }
+    </script>
+  </body>
+</html>

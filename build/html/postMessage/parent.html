@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>parent</title>
+  </head>
+  <body>
+    <button onclick="parentClick()">父页面点击</button>
+    <script>
+      const parentClick = () => {
+        console.log("parent");
+        // 调用子页面
+        child.window.childTest();
+      };
+      window.addEventListener(
+        "message",
+        function (e) {
+          console.log(e);
+        },
+        false
+      );
+
+      function parentTest() {
+        console.log("父页面方法");
+      }
+    </script>
+    <br />
+    <iframe
+      name="child"
+      src="./child.html"
+      frameborder="0"
+      width="100%"
+      style="border: 1px solid red"
+    ></iframe>
+  </body>
+</html>
