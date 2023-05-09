@@ -1,0 +1,256 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { Button, List, Tag, Alert, Collapse } from "antd";
+
+# 简介
+
+> 记录问题与学习
+
+# 常用资源链接
+
+<Tabs groupId="operating-systems">
+  <TabItem value="icon" label="图标">
+    <List
+      header={
+        <div>
+          <Tag color="success">原生图标</Tag>
+          <Alert
+            message="常用于伪元素before、after内的content"
+            style={{ marginTop: 5 }}
+          ></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "css content 图标",
+          url: "https://blog.csdn.net/qq_35396397/article/details/102904248",
+          detail:`.content:after{ content: "\\2715";}`
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+             {item.label}
+          </Button>
+           <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+    <List
+      header={
+        <div>
+          <Tag color="success">icon图标</Tag>
+          <Alert message="第三方图标" style={{ marginTop: 5 }}></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "antd 图标",
+          url: "https://ant.design/components/icon-cn",
+          detail:`import Icon, { HomeOutlined } from '@ant-design/icons';`
+        },
+        {
+          label: "iconfont",
+          url: "https://www.iconfont.cn/",
+          detail:`background-image或者下载到本地font-class，<i class="iconfont icon-xxx"></i> `
+        },
+        {
+          label: " Font Awesome",
+          url: "https://fontawesome.dashgame.com/",
+          detail:`link:<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  use:<i class="fa fa-camera-retro"></i>`
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+
+  </TabItem>
+  <TabItem value="npm" label="npm包">
+    <List
+      header={
+        <div>
+          <Tag color="success">ui库</Tag>
+          <Alert message="第三方组件" style={{ marginTop: 5 }}></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "antd",
+          url: "https://ant.design/",
+          detail:`npm i antd@latest`
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="doc" label="技术文档">
+   <List
+      header={
+        <div>
+          <Tag color="success">前端框架</Tag>
+          <Alert message="框架" style={{ marginTop: 5 }}></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "react",
+          url: "https://react.docschina.org/",
+          detail:`用于构建 Web 和原生交互界面的库，mvc`
+        },
+        {
+          label: "vue",
+          url: "https://cn.vuejs.org/",
+          detail:`用于构建 Web 和原生交互界面的库，mvvc`
+        },
+         {
+          label: "jquery",
+          url: "https://jquery.com/",
+          detail:``
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="lang" label="开发语言">
+   <List
+      header={
+        <div>
+          <Tag color="success">开发语言</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "es6",
+          url: "https://es6.ruanyifeng.com/",
+          detail:`《ECMAScript 6 入门教程》,阮一峰`
+        },
+        {
+          label: "typescript",
+          url: "https://www.typescriptlang.org/zh/",
+          detail:`JavaScript 超集`
+        },
+        {
+          label: "mdn",
+          url: "https://developer.mozilla.org/zh-CN/docs/Web",
+          detail:`前端三大件html js css`
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="tool" label="工具网站">
+   <List
+      header={
+        <div>
+          <Tag color="success">工具网站</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "Can I use",
+          url: "https://caniuse.com/",
+          detail:`css兼容性查询`
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+</Tabs>
