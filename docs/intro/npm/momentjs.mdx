@@ -1,0 +1,234 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info
+项目时间相关的处理包
+:::
+
+## 安装
+
+```js
+npm i moment
+```
+
+```jsx
+// 设置地区语言
+moment.locale("zh-cn");
+```
+
+## 常用
+
+### 1.时间点
+
+:::info
+
+```jsx
+
+//获取当前时间
+let now = moment().toDate();//Mon Jul 06 2020 13:50:51 GMT+0800 (中国标准时间)
+console.log(now)
+
+//格式化当前时间
+now = moment().format('YYYY-MM-DD');//2020-07-06
+console.log(now);
+
+//其它几种格式化方法
+now = moment().format('L') // 10/22/2016
+console.log(now);
+
+now = moment().format('LL') // October 22, 2016
+
+
+moment().hour() // 小时
+moment().date() // 一个月里的第几天
+moment().day() // 星期几
+moment().dayOfYear() // 一年里的第几天
+moment().week() // 一年里的第几周
+moment().month() // 第几个月
+moment().quarter() // 一年里的第几个季度
+moment().year() // 年
+moment().daysInMonth() // 当前月有多少天
+
+//操作
+moment().add(7, 'days') // 之后的第7天。第2个参数还可以是 'months', 'years' 等。注意是复数。
+moment().add(7, 'd'）// 与上面一行代码的运行结果一样。
+moment().subtract(1, 'months') // 上个月
+
+
+// 还支持 'year'，'month' 等
+moment().endOf('week')
+
+// 早于
+moment('2010-10-20').isBefore('2010-10-21') // true
+moment('2010-10-20').isBefore('2010-12-31', 'year') // false
+
+
+// 是否相等
+moment('2010-10-20').isSame('2010-10-20') // true
+moment('2010-10-20').isSame('2009-12-31', 'year')  // false
+
+
+// 晚于
+moment('2010-10-20').isAfter('2010-10-19') // true
+moment('2010-10-20').isAfter('2010-01-01', 'year') // false
+
+
+// 是否在时间范围内
+moment('2010-10-20').isBetween('2010-10-19', '2010-10-25') // true
+moment('2010-10-20').isBetween('2010-01-01', '2012-01-01', 'year') // false
+
+
+moment().isLeapYear()
+```
+
+:::
+
+### 2.时间差
+
+```jsx
+moment([2008, 2, 27]).diff([2007, 0, 28], "day");
+```
+
+### 3.时间范围
+
+:::note
+
+- 1. 当前时间
+
+```jsx
+const startTime = moment(moment().valueOf()).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 2. 昨天
+
+```jsx
+const startTime = moment(
+  moment().add(-1, "days").startOf("day").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(moment().add(-1, "days").endOf("day").valueOf()).format(
+  "YYYY/MM/DD HH:mm:ss"
+);
+```
+
+- 3. 本周
+
+```jsx
+const startTime = moment(
+  moment().week(moment().week()).startOf("week").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment().week(moment().week()).endOf("week").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 4. 上周
+
+```jsx
+const startTime = moment(
+  moment()
+    .week(moment().week() - 1)
+    .startOf("week")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment()
+    .week(moment().week() - 1)
+    .endOf("week")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 5. 本月
+
+```jsx
+const startTime = moment(
+  moment().month(moment().month()).startOf("month").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment().month(moment().month()).endOf("month").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 6. 上月
+
+```js
+const startTime = moment(
+  moment()
+    .month(moment().month() - 1)
+    .startOf("month")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment()
+    .month(moment().month() - 1)
+    .endOf("month")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 7. 本季度
+
+```jsx
+const startTime = moment(
+  moment().quarter(moment().quarter()).startOf("quarter").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment().quarter(moment().quarter()).endOf("quarter").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 8. 上季度
+
+```jsx
+const startTime = moment(
+  moment()
+    .quarter(moment().quarter() - 1)
+    .startOf("quarter")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment()
+    .quarter(moment().quarter() - 1)
+    .endOf("quarter")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 9. 本年
+
+```jsx
+const startTime = moment(
+  moment().year(moment().year()).startOf("year").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment().year(moment().year()).endOf("year").valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+- 10. 去年
+
+```jsx
+const startTime = moment(
+  moment()
+    .year(moment().year() - 1)
+    .startOf("year")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+
+const endTime = moment(
+  moment()
+    .year(moment().year() - 1)
+    .endOf("year")
+    .valueOf()
+).format("YYYY/MM/DD HH:mm:ss");
+```
+
+:::

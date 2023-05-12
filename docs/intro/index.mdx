@@ -6,11 +6,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import { Button, List, Tag, Alert, Collapse } from "antd";
 
-# 简介
-
-> 记录问题与学习
-
-# 常用资源链接
+# 主页
 
 <Tabs groupId="operating-systems">
   <TabItem value="icon" label="图标">
@@ -94,41 +90,6 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
       )}
     />
 
-  </TabItem>
-  <TabItem value="npm" label="npm包">
-    <List
-      header={
-        <div>
-          <Tag color="success">ui库</Tag>
-          <Alert message="第三方组件" style={{ marginTop: 5 }}></Alert>
-        </div>
-      }
-      bordered
-      dataSource={[
-        {
-          label: "antd",
-          url: "https://ant.design/",
-          detail:`npm i antd@latest`
-        },
-      ]}
-      renderItem={(item, i) => (
-        <List.Item>
-          <Button
-            type="link"
-            href={item.url}
-            target="_blank"
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-            }}
-          >
-            {item.label}
-          </Button>
-          <code>{item.detail}</code>
-        </List.Item>
-      )}
-    />
   </TabItem>
   <TabItem value="doc" label="技术文档">
    <List
