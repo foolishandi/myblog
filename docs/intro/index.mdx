@@ -9,7 +9,41 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
 # 主页
 
 <Tabs groupId="operating-systems">
-  <TabItem value="icon" label="图标">
+  <TabItem value="blog" label="博客相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">博客</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "阮一峰的网络日志",
+          url: "http://www.ruanyifeng.com/blog/",
+          detail:`阮一峰的网络日志`
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="icon" label="ui 相关">
     <List
       header={
         <div>
@@ -49,8 +83,8 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
     <List
       header={
         <div>
-          <Tag color="success">icon图标</Tag>
-          <Alert message="第三方图标" style={{ marginTop: 5 }}></Alert>
+          <Tag color="success">ui相关</Tag>
+          {/* <Alert message="第三方图标" style={{ marginTop: 5 }}></Alert> */}
         </div>
       }
       bordered
@@ -61,6 +95,11 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
           detail:`import Icon, { HomeOutlined } from '@ant-design/icons';`
         },
         {
+          label: "antd vue",
+          url: "https://antdv.com/components/overview",
+          detail:``
+        },
+        {
           label: "iconfont",
           url: "https://www.iconfont.cn/",
           detail:`background-image或者下载到本地font-class，<i class="iconfont icon-xxx"></i> `
@@ -69,6 +108,11 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
           label: " Font Awesome",
           url: "https://fontawesome.dashgame.com/",
           detail:`link:<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  use:<i class="fa fa-camera-retro"></i>`
+        },
+        {
+          label: "Element Plus",
+          url: "https://element-plus.gitee.io/zh-CN/",
+          detail:``
         },
       ]}
       renderItem={(item, i) => (

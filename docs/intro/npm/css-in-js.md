@@ -33,3 +33,54 @@ render(
   </div>
 );
 ```
+
+## 2.[@emotion/react](https://emotion.sh/docs/install)
+```json title='.babelrc'
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      { "runtime": "automatic", "importSource": "@emotion/react" }
+    ]
+  ],
+  "plugins": ["@emotion/babel-plugin"]
+}
+```
+```js
+import { css } from '@emotion/react'
+
+const breakpoints = [576, 768, 992, 1200]
+
+const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
+
+render(
+  <div>
+    <div
+      css={{
+        color: 'green',
+        [mq[0]]: {
+          color: 'gray'
+        },
+        [mq[1]]: {
+          color: 'hotpink'
+        }
+      }}
+    >
+      Some text!
+    </div>
+    <p
+      css={css`
+        color: green;
+        ${mq[0]} {
+          color: gray;
+        }
+        ${mq[1]} {
+          color: hotpink;
+        }
+      `}
+    >
+      Some other text!
+    </p>
+  </div>
+)
+```
