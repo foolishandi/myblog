@@ -9,19 +9,30 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
 # 主页
 
 <Tabs groupId="operating-systems">
-  <TabItem value="blog" label="博客相关">
+
+  <TabItem value="tool" label="工具网站">
    <List
       header={
         <div>
-          <Tag color="success">博客</Tag>
+          <Tag color="success">工具网站</Tag>
         </div>
       }
       bordered
       dataSource={[
         {
-          label: "阮一峰的网络日志",
-          url: "http://www.ruanyifeng.com/blog/",
-          detail:`阮一峰的网络日志`
+          label: "Can I use",
+          url: "https://caniuse.com/",
+          detail:`浏览器兼容性查询`
+        },
+        {
+          label: "正则可视化",
+          url: "https://wangwl.net/static/projects/visualRegex#",
+          detail:``
+        },
+        {
+          label: "即时工具",
+          url: "https://www.67tool.com/",
+          detail:`各种常用工具`
         }
       ]}
       renderItem={(item, i) => (
@@ -224,19 +235,19 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
       )}
     />
   </TabItem>
-  <TabItem value="tool" label="工具网站">
+    <TabItem value="blog" label="博客相关">
    <List
       header={
         <div>
-          <Tag color="success">工具网站</Tag>
+          <Tag color="success">博客</Tag>
         </div>
       }
       bordered
       dataSource={[
         {
-          label: "Can I use",
-          url: "https://caniuse.com/",
-          detail:`css兼容性查询`
+          label: "阮一峰的网络日志",
+          url: "http://www.ruanyifeng.com/blog/",
+          detail:`阮一峰的网络日志`
         }
       ]}
       renderItem={(item, i) => (
