@@ -1,0 +1,16 @@
+[
+	{
+		"desc": "默认",
+		"name": "test",
+		"isDir": true,
+		"children": [
+			{
+				"name": "test1",
+				"desc": "",
+				"method": "GET",
+				"host": null,
+				"path": "/api/test1"
+			}
+		]
+	}
+]

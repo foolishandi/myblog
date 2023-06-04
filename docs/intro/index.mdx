@@ -20,6 +20,21 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
       bordered
       dataSource={[
         {
+          label: "npm",
+          url: "https://www.npmjs.com/",
+          detail:`依赖包相关`
+        },
+        {
+          label: "浏览器插件下载",
+          url: "https://crxdl.com/",
+          detail:`通过插件名字搜索，不用科学上网`
+        },
+        {
+          label: "utool插件离线下载",
+          url: "https://api.u-tools.cn/Plugins/Developer/allPlugins",
+          detail:`内网使用utool`
+        },
+        {
           label: "Can I use",
           url: "https://caniuse.com/",
           detail:`浏览器兼容性查询`
@@ -33,6 +48,133 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
           label: "即时工具",
           url: "https://www.67tool.com/",
           detail:`各种常用工具`
+        },
+        {
+          label: "jquery插件",
+          url: "https://www.jq22.com/",
+          detail:``
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog1" label="博客相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">博客</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "阮一峰的网络日志",
+          url: "http://www.ruanyifeng.com/blog/",
+          detail:`阮一峰的网络日志`
+        },
+         {
+          label: "张鑫旭的网络日志",
+          url: "https://www.zhangxinxu.com/wordpress/",
+          detail:`css著作， 前端经验相关`
+        },
+        {
+          label: "网道相关文档",
+          url: "https://wangdoc.com/",
+          detail:`多语言经验相关`
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog2" label="算法相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">算法</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "LABULADONG 的算法网站",
+          url: "https://labuladong.github.io/algo/",
+          detail:``
+        },
+        {
+          label: "力扣",
+          url: "https://leetcode.cn/",
+          detail:``
+        },
+         {
+          label: "牛客",
+          url: "https://www.nowcoder.com/?fromPut=b2c_navigation",
+          detail:``
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog3" label="数据库相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">数据库</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "mongodb",
+          url: "https://www.mongodb.com/docs/manual/administration/install-community/",
+          detail:``
         }
       ]}
       renderItem={(item, i) => (
@@ -170,7 +312,7 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
           label: "jquery",
           url: "https://jquery.com/",
           detail:``
-        },
+        }
       ]}
       renderItem={(item, i) => (
         <List.Item>
@@ -215,40 +357,11 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
           url: "https://developer.mozilla.org/zh-CN/docs/Web",
           detail:`前端三大件html js css`
         },
-      ]}
-      renderItem={(item, i) => (
-        <List.Item>
-          <Button
-            type="link"
-            href={item.url}
-            target="_blank"
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-            }}
-          >
-            {item.label}
-          </Button>
-          <code>{item.detail}</code>
-        </List.Item>
-      )}
-    />
-  </TabItem>
-    <TabItem value="blog" label="博客相关">
-   <List
-      header={
-        <div>
-          <Tag color="success">博客</Tag>
-        </div>
-      }
-      bordered
-      dataSource={[
         {
-          label: "阮一峰的网络日志",
-          url: "http://www.ruanyifeng.com/blog/",
-          detail:`阮一峰的网络日志`
-        }
+          label: "css3",
+          url: "https://www.css3files.com/",
+          detail:``
+        },
       ]}
       renderItem={(item, i) => (
         <List.Item>
@@ -268,5 +381,5 @@ import { Button, List, Tag, Alert, Collapse } from "antd";
         </List.Item>
       )}
     />
-  </TabItem>
+   </TabItem>
 </Tabs>
