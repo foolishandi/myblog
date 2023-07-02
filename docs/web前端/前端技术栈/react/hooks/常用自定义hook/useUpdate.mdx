@@ -1,0 +1,37 @@
+:::info
+如果想让组件重新渲染，我们不得不更新 state，但是有时候业务需要的 state 是没必要更新的，我们不能仅仅为了让组件会重新渲染而强制让一个 state 做无意义的更新，所以这个时候我们就可以自定义一个更新的 hooks 来优雅的实现组件的强制更新
+:::
+
+## 1.实现
+
+```jsx
+import { useState } from "react";
+
+const useUpdate = () => {
+  const [, setFlag] = useState();
+  const update = () => {
+    setFlag(Date.now());
+  };
+
+  return update;
+};
+
+export default useUpdate;
+```
+
+## 2.使用
+
+```jsx
+const Home = (props) => {
+  // ...
+  const update = useUpdate();
+  return (
+    <div>
+      {Date.now()}
+      <div>
+        <button onClick={update}>update</button>
+      </div>
+    </div>
+  );
+};
+```
