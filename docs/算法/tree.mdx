@@ -5,6 +5,42 @@ title: tree遍历
 import CodeWrapper from "../components/_CodeWrapper";
 import STATIC_PATH_UTIL from "../components/static_path_util";
 
-<CodeWrapper languageType={"cpp"} path={STATIC_PATH_UTIL.cpp.treePath}></CodeWrapper>
+## 一、遍历要求：
 
+> 1.利用给定的数据生成对应的树
 
+> 2.查找目标数据，匹配规则是：结点数据需包括目前数据的所有字符，包括重复的字符，不考虑目标字符串顺序
+
+> 3.计数并打印包括找到的结点的全路径（到叶子结点）的个数
+
+## 二、示例数据
+```cpp
+  // pair，第一个字符串是第二个字符串的子节点，暂定输入的子节点字符不会重复，父节点可以重复
+  vector<pair<string, string>> belongToList{ vector<pair<string, string>> belongToList{
+      {"ACD", "C"}, {"DCA", "C"},  {"AD", "AH"},  {"EF", "ACD"},
+      {"C", "AH"},  {"CD", "AD"},  {"GH", "ACD"}, {"A", "DCA"},{"CF", "DCA"},
+      {"B", "DCA"}, {"CDE", "AC"}, {"E", "AC"},   {"EG", "AG"}};
+  const string target = "CD";
+```
+## 三、生成的样例树
+
+<img src={STATIC_PATH_UTIL.cpp.treePath + "/img.png"}/>
+
+## 四、c++ 的树结构
+<CodeWrapper languageType={"cpp"} path={STATIC_PATH_UTIL.cpp.treePath + "/tree.h"}></CodeWrapper>
+
+## 五、生成树类
+
+<CodeWrapper languageType={"cpp"} path={STATIC_PATH_UTIL.cpp.treePath + "/data_to_tree.h"}></CodeWrapper>
+
+## 六、结果输出
+```cpp
+path0:CD->AD->AH
+path1:EF->ACD->C->AH
+path2:GH->ACD->C->AH
+path3:A->DCA->C->AH
+path4:CF->DCA->C->AH
+path5:B->DCA->C->AH
+path6:CDE->AC
+the count of allPath which include "CD":7
+```

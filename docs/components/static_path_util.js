@@ -6,12 +6,12 @@ const typePath = {
 
 function cppPathMap() {
     const _root = typePath.cpp;
-    const _algorithm = "/algorithm";
+    const _algorithm = "algorithm";
     const _rootPrefix = (str) => _root + "/" + str;
     const _algorithmPrefix = (str) => _rootPrefix(_algorithm) + "/" + str;
 
     return {
-        treePath: _algorithmPrefix("tree.h")
+        treePath: _algorithmPrefix("tree")
     };
 }
 
