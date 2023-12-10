@@ -1,6 +1,6 @@
 # Dependencies
 /node_modules
-
+/static/cpp/cmake-build-debug
 # Production
 # /build
 
