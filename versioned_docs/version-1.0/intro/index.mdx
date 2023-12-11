@@ -1,0 +1,405 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { Button, List, Tag, Alert, Collapse } from "antd";
+
+# 主页
+
+<Tabs groupId="operating-systems" >
+
+  <TabItem value="tool" label="工具网站">
+   <List
+      header={
+        <div>
+          <Tag color="success">工具网站</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "npm",
+          url: "https://www.npmjs.com/",
+          detail:`依赖包相关`
+        },
+        {
+          label: "awesomejs",
+          url: "https://awesomejs.dev/",
+          detail:`依赖包相关,按流行框架分类`
+        },
+         {
+          label: "bootcdn",
+          url: "https://www.bootcdn.cn/",
+          detail:`常用依赖包cdn`
+        },
+        {
+          label: "浏览器插件下载",
+          url: "https://crxdl.com/",
+          detail:`通过插件名字搜索，不用科学上网`
+        },
+        {
+          label: "utool插件离线下载",
+          url: "https://api.u-tools.cn/Plugins/Developer/allPlugins",
+          detail:`内网使用utool`
+        },
+        {
+          label: "Can I use",
+          url: "https://caniuse.com/",
+          detail:`浏览器兼容性查询`
+        },
+        {
+          label: "正则可视化",
+          url: "https://wangwl.net/static/projects/visualRegex#",
+          detail:``
+        },
+        {
+          label: "即时工具",
+          url: "https://www.67tool.com/",
+          detail:`各种常用工具`
+        },
+        {
+          label: "jquery插件",
+          url: "https://www.jq22.com/",
+          detail:``
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog1" label="博客相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">博客</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "blog建站",
+          url: "https://www.docusaurus.cn/",
+          detail:`docusaurus`
+        },
+        {
+          label: "阮一峰的网络日志",
+          url: "http://www.ruanyifeng.com/blog/",
+          detail:`阮一峰的网络日志`
+        },
+         {
+          label: "张鑫旭的网络日志",
+          url: "https://www.zhangxinxu.com/wordpress/",
+          detail:`css著作， 前端经验相关`
+        },
+        {
+          label: "网道相关文档",
+          url: "https://wangdoc.com/",
+          detail:`多语言经验相关`
+        },
+        {
+          label: "菜鸟教程",
+          url: "https://www.runoob.com/",
+          detail:`教程相关`
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog2" label="算法相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">算法</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "LABULADONG 的算法网站",
+          url: "https://labuladong.github.io/algo/",
+          detail:``
+        },
+        {
+          label: "力扣",
+          url: "https://leetcode.cn/",
+          detail:``
+        },
+         {
+          label: "牛客",
+          url: "https://www.nowcoder.com/?fromPut=b2c_navigation",
+          detail:``
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="blog3" label="数据库相关">
+   <List
+      header={
+        <div>
+          <Tag color="success">数据库</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "mongodb",
+          url: "https://www.mongodb.com/docs/manual/administration/install-community/",
+          detail:``
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="icon" label="ui 相关">
+    <List
+      header={
+        <div>
+          <Tag color="success">原生图标</Tag>
+          <Alert
+            message="常用于伪元素before、after内的content"
+            style={{ marginTop: 5 }}
+          ></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "css content 图标",
+          url: "https://blog.csdn.net/qq_35396397/article/details/102904248",
+          detail:`.content:after{ content: "\\2715";}`
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+             {item.label}
+          </Button>
+           <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+    <List
+      header={
+        <div>
+          <Tag color="success">ui相关</Tag>
+          {/* <Alert message="第三方图标" style={{ marginTop: 5 }}></Alert> */}
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "antd 图标",
+          url: "https://ant.design/components/icon-cn",
+          detail:`import Icon, { HomeOutlined } from '@ant-design/icons';`
+        },
+        {
+          label: "antd vue",
+          url: "https://antdv.com/components/overview",
+          detail:``
+        },
+        {
+          label: "iconfont",
+          url: "https://www.iconfont.cn/",
+          detail:`background-image或者下载到本地font-class，<i class="iconfont icon-xxx"></i> `
+        },
+        {
+          label: " Font Awesome",
+          url: "https://fontawesome.dashgame.com/",
+          detail:`link:<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  use:<i class="fa fa-camera-retro"></i>`
+        },
+        {
+          label: "Element Plus",
+          url: "https://element-plus.gitee.io/zh-CN/",
+          detail:``
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+
+  </TabItem>
+  <TabItem value="doc" label="技术文档">
+   <List
+      header={
+        <div>
+          <Tag color="success">前端框架</Tag>
+          <Alert message="框架" style={{ marginTop: 5 }}></Alert>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "react",
+          url: "https://react.docschina.org/",
+          detail:`用于构建 Web 和原生交互界面的库，mvc`
+        },
+        {
+          label: "vue",
+          url: "https://cn.vuejs.org/",
+          detail:`用于构建 Web 和原生交互界面的库，mvvc`
+        },
+         {
+          label: "jquery",
+          url: "https://jquery.com/",
+          detail:``
+        }
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+  </TabItem>
+  <TabItem value="lang" label="开发语言">
+   <List
+      header={
+        <div>
+          <Tag color="success">开发语言</Tag>
+        </div>
+      }
+      bordered
+      dataSource={[
+        {
+          label: "es6",
+          url: "https://es6.ruanyifeng.com/",
+          detail:`《ECMAScript 6 入门教程》,阮一峰`
+        },
+        {
+          label: "typescript",
+          url: "https://www.typescriptlang.org/zh/",
+          detail:`JavaScript 超集`
+        },
+        {
+          label: "mdn",
+          url: "https://developer.mozilla.org/zh-CN/docs/Web",
+          detail:`前端三大件html js css`
+        },
+        {
+          label: "css3",
+          url: "https://www.css3files.com/",
+          detail:``
+        },
+      ]}
+      renderItem={(item, i) => (
+        <List.Item>
+          <Button
+            type="link"
+            href={item.url}
+            target="_blank"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            {item.label}
+          </Button>
+          <code>{item.detail}</code>
+        </List.Item>
+      )}
+    />
+   </TabItem>
+</Tabs>

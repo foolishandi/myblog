@@ -1,0 +1,50 @@
+:::info
+监听一个元素滚动位置的变化来决定展现那些内容
+:::
+
+## 1.实现
+
+```jsx
+import { useState, useEffect } from "react";
+
+const useScroll = (scrollRef) => {
+  const [pos, setPos] = useState([0, 0]);
+
+  useEffect(() => {
+    function handleScroll(e) {
+      setPos([scrollRef.current.scrollLeft, scrollRef.current.scrollTop]);
+    }
+    scrollRef.current.addEventListener("scroll", handleScroll, false);
+    return () => {
+      scrollRef.current.removeEventListener("scroll", handleScroll, false);
+    };
+  }, []);
+
+  return pos;
+};
+
+export default useScroll;
+```
+
+## 2.使用
+
+```jsx
+import React, { useRef } from "react";
+
+import { useScroll } from "hooks";
+const Home = (props) => {
+  const scrollRef = useRef(null);
+  const [x, y] = useScroll(scrollRef);
+
+  return (
+    <div>
+      <div ref={scrollRef}>
+        <div className="innerBox"></div>
+      </div>
+      <div>
+        {x}, {y}
+      </div>
+    </div>
+  );
+};
+```

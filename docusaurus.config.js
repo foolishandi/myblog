@@ -35,8 +35,8 @@ const config = {
       {
         languages: ["zh"], // language codes
         excludeRoutes: [
-          'docs/**/*', // exclude changelogs from indexing
-      ]
+          "docs/**/*", // exclude changelogs from indexing
+        ],
       },
     ],
     // [
@@ -91,6 +91,10 @@ const config = {
           src: "img/Laptop2.svg",
         },
         items: [
+          {
+            type: "docsVersionDropdown",
+            position: "right",
+          },
           {
             type: "doc",
             docId: "intro/index",
